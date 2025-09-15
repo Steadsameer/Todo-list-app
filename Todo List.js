@@ -1,6 +1,7 @@
 let todoItemsContainer = document.getElementById("todoItemsContainer");
 let addTodoButton = document.getElementById("addTodoButton");
 let saveTodoButton = document.getElementById("saveTodoButton");
+let clearAllButton = document.getElementById("clearAll");
 
 function getTodoListFromLocalStorage() {
     let stringifiedTodoList = localStorage.getItem("todoList");
@@ -17,6 +18,10 @@ let todosCount = todoList.length;
 
 saveTodoButton.onclick = function() {
     localStorage.setItem("todoList", JSON.stringify(todoList));
+};
+clearAllButton.onclick = function(){
+    todoItemsContainer.innerHTML = ""; // removes all tasks
+    localStorage.removeItem("todoList"); // optional: also clear saved todos
 };
 
 function onAddTodo() {
